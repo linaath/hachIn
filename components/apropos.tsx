@@ -16,9 +16,10 @@ const categories = [
     { id: "training", label: "Centre de Formation" },
 ]
 
-export default function SignForm() {
+export default function AproposForm() {
     const [category, setCategory] = useState("")
     const router = useRouter()
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         // Handle form submission
@@ -87,3 +88,4 @@ export default function SignForm() {
         </Card>
     )
 }
+

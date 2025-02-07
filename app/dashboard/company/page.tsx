@@ -8,7 +8,6 @@ export default function CompanyDashboard() {
   return (
     <div className="container py-10">
       <h1 className="text-3xl font-bold mb-6">Tableau de bord Entreprise</h1>
-
       <Tabs defaultValue="jobs" className="space-y-6">
         <TabsList>
           <TabsTrigger value="jobs">Offres d'emploi</TabsTrigger>

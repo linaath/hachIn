@@ -16,7 +16,7 @@ export default function Header() {
           />
         </Link>
         <nav className="hidden md:flex items-center space-x-6">
-          <Link href="/about" className="text-foreground/60 hover:text-foreground">
+          <Link href="/auth/Apropos" className="text-foreground/60 hover:text-foreground">
             À propos
           </Link>
           <Link href="/auth/Contact" className="text-foreground/60 hover:text-foreground">

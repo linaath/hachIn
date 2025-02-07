@@ -19,9 +19,6 @@ export default function Home() {
               <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100">
                 <Link href="/auth/register">Commencer maintenant</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
-                <Link href="/about">En savoir plus</Link>
-              </Button>
             </div>
           </div>
         </div>
