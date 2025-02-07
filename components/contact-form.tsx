@@ -1,91 +1,48 @@
-"use client"
-
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Textarea } from "@/components/ui/textarea"
+import { Mail, Phone, MapPin } from "lucide-react"
 
-const categories = [
-    { id: "company", label: "Entreprise" },
-    { id: "startup", label: "Startup" },
-    { id: "pastry", label: "Pâtisserie" },
-    { id: "chef", label: "Chef Cuisinier" },
-    { id: "training", label: "Centre de Formation" },
-]
-
-export default function ContactForm() {
-    const [category, setCategory] = useState("")
-    const router = useRouter()
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        // Handle form submission
-        // Redirect to appropriate dashboard based on category
-        router.push(`/dashboard/${category}`)
-    }
-
+export default function ContactPage() {
     return (
-        <Card className="w-full max-w-lg mx-auto">
-            <CardHeader>
-                <CardTitle className="text-2xl text-center">Créer un compte</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-2">
-                        <Label htmlFor="category">Catégorie</Label>
-                        <Select value={category} onValueChange={setCategory}>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Sélectionnez votre catégorie" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {categories.map((cat) => (
-                                    <SelectItem key={cat.id} value={cat.id}>
-                                        {cat.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
+        <div className="container py-10">
+            <Card className="max-w-3xl mx-auto">
+                <CardHeader>
+                    <CardTitle className="text-3xl font-bold text-center">Restons en contact</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                    <p className="text-center text-lg text-muted-foreground">
+                        Une question, une suggestion ou un besoin particulier ? Contactez-nous !
+                    </p>
 
-                    <div className="space-y-2">
-                        <Label htmlFor="fullName">Nom complet</Label>
-                        <Input id="fullName" required />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="email">Adresse email</Label>
-                        <Input id="email" type="email" required />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="phone">Numéro de téléphone</Label>
-                        <Input id="phone" type="tel" required />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="address">Adresse</Label>
-                        <Input id="address" required />
-                    </div>
-
-                    {category && (
-                        <div className="space-y-2">
-                            <Label htmlFor="document">Document requis</Label>
-                            <Input id="document" type="file" accept=".pdf,.jpg,.png" required />
-                            <p className="text-sm text-muted-foreground">
-                                {category === "company" || category === "startup" ? "Registre du commerce" : "Diplôme ou certification"}
-                            </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-4">
+                            <div className="flex items-center space-x-3">
+                                <Mail className="text-primary" />
+                                <span>support@forssa.com</span>
+                            </div>
+                            <div className="flex items-center space-x-3">
+                                <Phone className="text-primary" />
+                                <span>+213 123 456 789</span>
+                            </div>
+                            <div className="flex items-center space-x-3">
+                                <MapPin className="text-primary" />
+                                <span>123, Rue des Startups, Alger, Algérie</span>
+                            </div>
                         </div>
-                    )}
 
-                    <Button type="submit" className="w-full">
-                        S'inscrire
-                    </Button>
-                </form>
-            </CardContent>
-        </Card>
+                        <form className="space-y-4">
+                            <Input placeholder="Votre nom" />
+                            <Input type="email" placeholder="Votre email" />
+                            <Textarea placeholder="Votre message" rows={4} />
+                            <Button type="submit" className="w-full">
+                                Envoyer
+                            </Button>
+                        </form>
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
     )
 }
-

@@ -1,91 +1,28 @@
 "use client"
-
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-const categories = [
-    { id: "company", label: "Entreprise" },
-    { id: "startup", label: "Startup" },
-    { id: "pastry", label: "Pâtisserie" },
-    { id: "chef", label: "Chef Cuisinier" },
-    { id: "training", label: "Centre de Formation" },
-]
-
-export default function AproposForm() {
-    const [category, setCategory] = useState("")
-    const router = useRouter()
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        // Handle form submission
-        // Redirect to appropriate dashboard based on category
-        router.push(`/dashboard/${category}`)
-    }
-
+export default function AboutPage() {
     return (
-        <Card className="w-full max-w-lg mx-auto">
-            <CardHeader>
-                <CardTitle className="text-2xl text-center">Créer un compte</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-2">
-                        <Label htmlFor="category">Catégorie</Label>
-                        <Select value={category} onValueChange={setCategory}>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Sélectionnez votre catégorie" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {categories.map((cat) => (
-                                    <SelectItem key={cat.id} value={cat.id}>
-                                        {cat.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="fullName">Nom complet</Label>
-                        <Input id="fullName" required />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="email">Adresse email</Label>
-                        <Input id="email" type="email" required />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="phone">Numéro de téléphone</Label>
-                        <Input id="phone" type="tel" required />
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="address">Adresse</Label>
-                        <Input id="address" required />
-                    </div>
-
-                    {category && (
-                        <div className="space-y-2">
-                            <Label htmlFor="document">Document requis</Label>
-                            <Input id="document" type="file" accept=".pdf,.jpg,.png" required />
-                            <p className="text-sm text-muted-foreground">
-                                {category === "company" || category === "startup" ? "Registre du commerce" : "Diplôme ou certification"}
-                            </p>
-                        </div>
-                    )}
-
-                    <Button type="submit" className="w-full">
-                        S'inscrire
-                    </Button>
-                </form>
-            </CardContent>
-        </Card>
+        <div className="container py-10">
+            <Card className="max-w-3xl mx-auto">
+                <CardHeader>
+                    <CardTitle className="text-3xl font-bold text-center">À propos de FORSSA</CardTitle>
+                </CardHeader>
+                <CardContent className="prose prose-lg">
+                    <p>
+                        FORSSA est une plateforme innovante qui connecte les jeunes talents sans expérience avec des startups et
+                        entreprises en quête de nouveaux profils. Notre mission est de faciliter l'accès au marché du travail en
+                        offrant des outils adaptés tels que des candidatures simplifiées, des simulations d'entretiens, des quiz de
+                        validation de compétences et un système de points améliorant la visibilité des candidats.
+                    </p>
+                    <p>
+                        Nous croyons en l'égalité des chances et souhaitons offrir à chacun l'opportunité de réussir, quel que soit
+                        son domaine. Que vous soyez une entreprise recherchant de nouveaux talents ou un jeune diplômé en quête
+                        d'opportunités, FORSSA vous accompagne vers un avenir professionnel prometteur.
+                    </p>
+                    <p>Rejoignez-nous dès aujourd'hui et donnez un coup d'accélérateur à votre carrière !</p>
+                </CardContent>
+            </Card>
+        </div>
     )
 }
-
