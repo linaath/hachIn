@@ -36,7 +36,7 @@ export default function ContactPage() {
                             <Input placeholder="Votre nom" />
                             <Input type="email" placeholder="Votre email" />
                             <Textarea placeholder="Votre message" rows={4} />
-                            <Button type="submit" className="w-full">
+                            <Button type="submit" className="w-full text-white">
                                 Envoyer
                             </Button>
                         </form>
