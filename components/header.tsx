@@ -10,8 +10,8 @@ export default function Header() {
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Capture%20d'%C3%A9cran%202025-02-07%20143423-yGXnPeJeLNh0cJt1Lk13ILaUSaX7uK.png"
             alt="FORSSA Logo"
-            width={120}
-            height={40}
+            width={70}
+            height={2}
             className="object-contain"
           />
         </Link>
@@ -19,11 +19,11 @@ export default function Header() {
           <Link href="/about" className="text-foreground/60 hover:text-foreground">
             À propos
           </Link>
-          <Link href="/contact" className="text-foreground/60 hover:text-foreground">
+          <Link href="/auth/Contact" className="text-foreground/60 hover:text-foreground">
             Contact
           </Link>
-          <Button asChild variant="outline">
-            <Link href="/auth/login">Connexion</Link>
+          <Button asChild >
+            <Link href="/auth/sign">Connexion</Link>
           </Button>
           <Button asChild>
             <Link href="/auth/register">Inscription</Link>

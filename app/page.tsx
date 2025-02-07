@@ -11,7 +11,6 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
               Trouvez votre prochain talent ou emploi avec FORSSA 
-              <p>Hello world</p>
             </h1>
             <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl">
               La plateforme qui connecte les entreprises avec les meilleurs talents dans tous les domaines
