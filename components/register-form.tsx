@@ -80,7 +80,7 @@ export default function RegisterForm() {
             </div>
           )}
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full text-white">
             S'inscrire
           </Button>
         </form>
