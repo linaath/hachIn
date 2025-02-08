@@ -38,7 +38,8 @@ export default function CandidateDashboard() {
                         <CardHeader>
                             <CardTitle className="flex items-center justify-between">
                                 <span>Vos candidatures</span>
-                                <Button>Chercher des offres</Button>
+                                <Button>Chercher des offres</Button> 
+                                <span></span>
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
