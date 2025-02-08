@@ -1,6 +1,6 @@
-import ContactForm from "@/components/contact-form"
+import ContactForm from "@/components/apropos"
 
-export default function ContactPage() {
+export default function AproposPage() {
     return (
         <div className="container py-10">
             <ContactForm />

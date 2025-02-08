@@ -5,17 +5,14 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import Link from "next/link"  // Importing Link component
 
 const categories = [
-    { id: "company", label: "Entreprise" },
-    { id: "startup", label: "Startup" },
-    { id: "pastry", label: "Pâtisserie" },
-    { id: "chef", label: "Chef Cuisinier" },
-    { id: "training", label: "Centre de Formation" },
-]
+    { id: "company", label: "company" },
+    { id: "user", label: "user" },
 
+]
 export default function SignForm() {
     const [category, setCategory] = useState("")
     const router = useRouter()
@@ -24,66 +21,58 @@ export default function SignForm() {
         e.preventDefault()
         // Handle form submission
         // Redirect to appropriate dashboard based on category
-        router.push(`/dashboard/${category}`)
+        if (category === "company") {
+            router.push("/dashboard/company")  // Redirect to company dashboard page
+        } else {
+            router.push(`/dashboard/${category}`)  // Redirect to other category dashboards
+        }
     }
-
     return (
         <Card className="w-full max-w-lg mx-auto">
             <CardHeader>
-                <CardTitle className="text-2xl text-center">Créer un compte</CardTitle>
+                <CardTitle className="text-2xl text-center">Se Connecter </CardTitle>
             </CardHeader>
             <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                        <Label htmlFor="category">Catégorie</Label>
-                        <Select value={category} onValueChange={setCategory}>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Sélectionnez votre catégorie" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {categories.map((cat) => (
-                                    <SelectItem key={cat.id} value={cat.id}>
-                                        {cat.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                        <Label htmlFor="fullName">Nom complet</Label>
-                        <Input id="fullName" required />
-                    </div>
-
-                    <div className="space-y-2">
                         <Label htmlFor="email">Adresse email</Label>
-                        <Input id="email" type="email" required />
+                        <Input id="email" type="email" required placeholder="entrer votre Email"  />
                     </div>
-
                     <div className="space-y-2">
-                        <Label htmlFor="phone">Numéro de téléphone</Label>
-                        <Input id="phone" type="tel" required />
+                        <Label htmlFor="password">Mot de passe</Label>
+                        <Input id="password" type="password" required  placeholder="entrer votre mot de passe" />
                     </div>
-
+                    {/* Add a Select dropdown for category */}
                     <div className="space-y-2">
-                        <Label htmlFor="address">Adresse</Label>
-                        <Input id="address" required />
+                        <Label htmlFor="category">Choisir la catégorie</Label>
+                        <select
+                            id="category"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                            className="w-full p-2 border rounded"
+                            required>
+                            <option value="">Sélectionner une catégorie</option>
+                            {categories.map((cat) => (
+                                <option key={cat.id} value={cat.id}>
+                                    {cat.label}
+                                </option>
+                            ))}
+                        </select>
                     </div>
-
-                    {category && (
-                        <div className="space-y-2">
-                            <Label htmlFor="document">Document requis</Label>
-                            <Input id="document" type="file" accept=".pdf,.jpg,.png" required />
-                            <p className="text-sm text-muted-foreground">
-                                {category === "company" || category === "startup" ? "Registre du commerce" : "Diplôme ou certification"}
-                            </p>
-                        </div>
-                    )}
-
-                    <Button type="submit" className="w-full">
-                        S'inscrire
+                    <Button type="submit" className="w-full text-white">
+                        Démmarer
                     </Button>
                 </form>
+                {/* Added link to sign in en tant que entreprise */}
+                {/* Added link to sign up page */}
+                <div className="mt-4 text-center">
+                    <p className="text-sm">
+                        Vous n'avez pas de compte ?{" "}
+                        <Link href="/auth/register" className="text-blue-500 hover:underline">
+                            Cliquez ici
+                        </Link>
+                    </p>
+                </div>
             </CardContent>
         </Card>
     )
